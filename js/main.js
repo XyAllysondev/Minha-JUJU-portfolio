@@ -248,6 +248,11 @@
   /* ══════════════════════════════════════════════
      5. REVEALS (IntersectionObserver)
      ══════════════════════════════════════════════ */
+  // Alvos ainda não revelados. initScroll usa como rede de segurança:
+  // um bloco alto (a lista de contatos, por exemplo) pode nunca alcançar
+  // um threshold percentual e ficaria invisível para sempre.
+  const pendingReveals = [];
+
   function initReveals() {
     const targets = $$('[data-reveal], .card, .player');
     if (!('IntersectionObserver' in window)) {
@@ -262,9 +267,9 @@
         setTimeout(() => el.classList.add('is-in'), d);
         io.unobserve(el);
       });
-    }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: 0.01, rootMargin: '0px 0px -6% 0px' });
 
-    targets.forEach(t => io.observe(t));
+    targets.forEach(t => { io.observe(t); pendingReveals.push(t); });
 
     // cards da galeria com stagger em cascata
     $$('#grid .card').forEach((c, i) => c.style.transitionDelay = (i % 4) * 70 + 'ms');
@@ -303,6 +308,17 @@
         });
       } else {
         parallax.forEach(p => { if (p.el.style.transform) p.el.style.transform = ''; });
+      }
+
+      // rede de segurança: se já está na tela, tem que estar visível
+      for (let i = pendingReveals.length - 1; i >= 0; i--) {
+        const el = pendingReveals[i];
+        if (el.classList.contains('is-in')) { pendingReveals.splice(i, 1); continue; }
+        const r = el.getBoundingClientRect();
+        if (r.top < vh * 0.9 && r.bottom > 0) {
+          el.classList.add('is-in');
+          pendingReveals.splice(i, 1);
+        }
       }
 
       // texto que acende conforme o scroll
@@ -657,13 +673,15 @@
   function initWhatsApp() {
     const wa = $('#wa');
     if (!wa) return;
-    const contato = $('#contato');
+    // esconde só quando a LISTA de contatos está mesmo na tela — usar a
+    // seção inteira deixava o site sem nenhum contato visível no topo dela
+    const alvo = $('.cta__links');
     let atContact = false;
 
-    if ('IntersectionObserver' in window && contato) {
+    if ('IntersectionObserver' in window && alvo) {
       new IntersectionObserver(ents => {
         ents.forEach(e => { atContact = e.isIntersecting; update(); });
-      }, { threshold: 0.18 }).observe(contato);
+      }, { threshold: 0.25 }).observe(alvo);
     }
 
     function update() {

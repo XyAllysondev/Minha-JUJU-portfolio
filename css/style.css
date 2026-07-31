@@ -625,14 +625,15 @@ body.has-cursor .cursor{opacity:1}
 
 /* ═══════════ CTA ═══════════ */
 .cta{text-align:center;overflow:hidden}
-.cta__title{font-family:var(--f-display);line-height:1.09;letter-spacing:.005em;margin-top:clamp(10px,2vw,26px)}
-.cta__title .line{display:block;font-size:clamp(54px,14.4vw,214px)}
+/* menor que o hero de proposito: os contatos precisam caber na mesma tela */
+.cta__title{font-family:var(--f-display);line-height:1.06;letter-spacing:.005em;margin-top:clamp(8px,1.4vw,18px)}
+.cta__title .line{display:block;font-size:clamp(48px,11vw,158px)}
 .cta__title .line--out{color:transparent;-webkit-text-stroke:2px rgba(244,240,232,.76)}
 @supports not (-webkit-text-stroke:1px #000){.cta__title .line--out{color:var(--paper)}}
-.cta__sub{margin-top:26px;color:var(--mute);font-size:clamp(14px,1.5vw,17px);max-width:52ch;margin-inline:auto}
+.cta__sub{margin-top:20px;color:var(--mute);font-size:clamp(14px,1.5vw,17px);max-width:52ch;margin-inline:auto}
 
 .cta__links{
-  margin:clamp(44px,6vw,76px) auto 0;max-width:760px;
+  margin:clamp(28px,3.4vw,46px) auto 0;max-width:760px;
   display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;
 }
 .clink{
