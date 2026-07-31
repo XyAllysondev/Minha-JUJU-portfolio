@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Júlia Araújo — Lifestyle Creator, Social Media & Filmmaker</title>
+<meta name="description" content="Portfólio de Júlia Araújo — criadora de conteúdo digital, social media e filmmaker. Vídeo, estratégia e conteúdo que engaja.">
+<meta name="theme-color" content="#060608">
+<meta property="og:title" content="Júlia Araújo — Lifestyle Creator & Filmmaker">
+<meta property="og:description" content="Conteúdo que engaja. Vídeo, estratégia e presença digital.">
+<meta property="og:image" content="assets/img/poster-reel.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23060608'/%3E%3Ctext x='32' y='45' font-family='Arial Black,Arial' font-size='34' font-weight='900' text-anchor='middle' fill='%23ff2d55'%3EJ%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-loading">
+
+<!-- ══════════════ PRELOADER ══════════════ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__grid"></div>
+  <div class="loader__gate">
+    <svg class="loader__leader" viewBox="0 0 200 200" aria-hidden="true">
+      <circle class="lead-ring" cx="100" cy="100" r="88"/>
+      <circle class="lead-prog" cx="100" cy="100" r="88"/>
+      <line class="lead-cross" x1="100" y1="4" x2="100" y2="196"/>
+      <line class="lead-cross" x1="4" y1="100" x2="196" y2="100"/>
+      <path class="lead-sweep" d="M100 100 L100 12 A88 88 0 0 1 100 12 Z"/>
+    </svg>
+    <div class="loader__num" id="loaderNum">5</div>
+  </div>
+  <div class="loader__meta">
+    <span>ROLL 01</span><span id="loaderPct">00%</span><span>JULIA ARAUJO</span>
+  </div>
+  <div class="loader__bar"><i id="loaderBar"></i></div>
+</div>
+
+<!-- ══════════════ FX LAYERS ══════════════ -->
+<canvas class="grain" id="grain" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+<div class="scanlines" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"></span><span class="cursor__label"></span></div>
+<div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+<div class="curtain" id="curtain" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+
+<!-- ══════════════ NAV ══════════════ -->
+<header class="nav" id="nav">
+  <a href="#top" class="nav__brand" data-cursor="Início">
+    <span class="nav__mark">JA</span>
+    <span class="nav__name">Júlia Araújo</span>
+  </a>
+  <nav class="nav__links" aria-label="Navegação principal">
+    <a href="#sobre" data-nav>Sobre</a>
+    <a href="#reel" data-nav>Reel</a>
+    <a href="#trabalhos" data-nav>Trabalhos</a>
+    <a href="#servicos" data-nav>Serviços</a>
+    <a href="#formacao" data-nav>Formação</a>
+  </nav>
+  <div class="nav__rec">
+    <span class="rec-dot"></span>
+    <span class="rec-tc" id="timecode">00:00:00:00</span>
+  </div>
+  <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><i></i><i></i></button>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="menu__inner">
+    <a href="#sobre" data-nav><em>01</em> Sobre</a>
+    <a href="#reel" data-nav><em>02</em> Reel</a>
+    <a href="#trabalhos" data-nav><em>03</em> Trabalhos</a>
+    <a href="#servicos" data-nav><em>04</em> Serviços</a>
+    <a href="#formacao" data-nav><em>05</em> Formação</a>
+    <a href="#contato" data-nav><em>06</em> Contato</a>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" id="hero">
+  <div class="hero__bg" data-parallax="0.18">
+    <video class="hero__video" id="heroVideo" src="assets/video/hero-loop.mp4" poster="assets/img/poster-hero.jpg" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+    <div class="hero__grade"></div>
+  </div>
+
+  <div class="hero__hud" aria-hidden="true">
+    <span class="hud tl">● REC &nbsp;|&nbsp; 9:16 &nbsp;|&nbsp; 24 FPS</span>
+    <span class="hud tr">ISO 400 &nbsp;|&nbsp; f/1.8</span>
+    <span class="hud bl">BRASIL &nbsp;/&nbsp; 2026</span>
+    <span class="hud br">SCENE 01 — TAKE 01</span>
+    <i class="corner c1"></i><i class="corner c2"></i><i class="corner c3"></i><i class="corner c4"></i>
+  </div>
+
+  <div class="hero__inner">
+    <p class="hero__kicker" data-reveal="fade">
+      <span class="dot"></span> Criadora de conteúdo digital
+    </p>
+
+    <h1 class="hero__title">
+      <span class="line" data-split>JÚLIA</span>
+      <span class="line line--out" data-split>ARAÚJO</span>
+    </h1>
+
+    <p class="hero__sub" data-reveal="fade" data-delay="260">
+      <em>Lifestyle Creator</em> · Social Media · <em>Filmmaker</em>
+    </p>
+
+    <div class="hero__cta" data-reveal="fade" data-delay="400">
+      <a href="#reel" class="btn btn--solid" data-magnet data-cursor="Play">
+        <span>Assistir o reel</span>
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+      </a>
+      <a href="#contato" class="btn btn--ghost" data-magnet data-cursor="Falar">Fechar parceria</a>
+    </div>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <span>role</span><i></i>
+  </div>
+
+  <div class="marquee marquee--hero" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Conteúdo que engaja ✦ Estratégia ✦ Vídeo ✦ Storytelling ✦ Social Media ✦ Publicidade ✦ Direção ✦ Edição ✦</span>
+      <span>Conteúdo que engaja ✦ Estratégia ✦ Vídeo ✦ Storytelling ✦ Social Media ✦ Publicidade ✦ Direção ✦ Edição ✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SOBRE ══════════════ -->
+<section class="sobre section" id="sobre">
+  <div class="section__label"><em>01</em> Sobre</div>
+
+  <div class="sobre__grid">
+    <div class="sobre__media" data-parallax="-0.06">
+      <div class="frame" data-reveal="mask">
+        <img src="assets/img/juju-07-studio.jpg" alt="Júlia Araújo em bastidores, trabalhando com laptop e câmera" loading="lazy" decoding="async">
+        <span class="frame__tag">Bastidores · Direção</span>
+      </div>
+      <div class="frame frame--sm" data-reveal="mask" data-delay="180">
+        <img src="assets/img/juju-05-desk.jpg" alt="Júlia Araújo planejando conteúdo com celular, câmera e caderno" loading="lazy" decoding="async">
+      </div>
+    </div>
+
+    <div class="sobre__text">
+      <p class="scrub" data-scrub>
+        Eu transformo ideia em <em>imagem</em>, e imagem em <em>resultado</em>.
+        Sou criadora de conteúdo digital, social media e filmmaker — a pessoa que
+        pensa a estratégia, aperta o rec e entrega a peça pronta para engajar.
+        Do roteiro à edição final, cada frame nasce de um objetivo claro:
+        fazer a marca ser <em>lembrada</em>.
+      </p>
+
+      <ul class="sobre__facts" data-reveal="stagger">
+        <li><b>Estratégia</b><span>Planejamento de conteúdo e posicionamento de marca.</span></li>
+        <li><b>Produção</b><span>Roteiro, direção, captação e edição de vídeo.</span></li>
+        <li><b>Presença</b><span>Feed, Reels e campanhas que conversam com a audiência.</span></li>
+      </ul>
+
+      <a href="#trabalhos" class="link-arrow" data-magnet data-cursor="Ver">
+        Ver os trabalhos
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- números -->
+  <div class="stats" data-reveal="stagger">
+    <div class="stat"><b class="count" data-to="1197" data-sep>0</b><span>Comunidade no Instagram</span></div>
+    <div class="stat"><b class="count" data-to="43">0</b><span>Publicações no feed</span></div>
+    <div class="stat"><b class="count" data-to="22" data-suffix="h">0</b><span>Horas de formação certificada</span></div>
+    <div class="stat"><b class="count" data-to="4">0</b><span>Certificações concluídas</span></div>
+  </div>
+</section>
+
+<!-- ══════════════ REEL ══════════════ -->
+<section class="reel section" id="reel">
+  <div class="section__label"><em>02</em> Reel</div>
+
+  <div class="reel__head">
+    <h2 class="h-display" data-reveal="lines"><span>Vídeo</span><span class="ital">institucional</span></h2>
+    <div class="reel__meta" data-reveal="fade" data-delay="200">
+      <p><b>Engaja Mídia</b> — apresentação da agência.</p>
+      <p class="muted">Direção, roteiro e edição · Formato 9:16 · 00:55</p>
+    </div>
+  </div>
+
+  <div class="gate" data-reveal="mask">
+    <div class="gate__perf" aria-hidden="true"></div>
+    <div class="player" id="player">
+      <video id="reelVideo" src="assets/video/reel-principal.mp4" poster="assets/img/poster-reel.jpg" playsinline preload="metadata" loop muted></video>
+      <button class="player__big" id="playBig" aria-label="Reproduzir vídeo">
+        <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+      </button>
+      <div class="player__ui">
+        <button class="pbtn" id="playToggle" aria-label="Reproduzir ou pausar">
+          <svg class="ic-play" viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+          <svg class="ic-pause" viewBox="0 0 24 24" width="16" height="16"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>
+        </button>
+        <div class="pbar" id="pbar" role="slider" aria-label="Progresso do vídeo" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <i id="pfill"></i><b id="phandle"></b>
+        </div>
+        <span class="ptime" id="ptime">00:00 / 00:55</span>
+        <button class="pbtn" id="muteToggle" aria-label="Ativar ou desativar som">
+          <svg class="ic-mute" viewBox="0 0 24 24" width="16" height="16"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M17 8l5 8M22 8l-5 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <svg class="ic-sound" viewBox="0 0 24 24" width="16" height="16"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+        </button>
+        <button class="pbtn" id="fsToggle" aria-label="Tela cheia">
+          <svg viewBox="0 0 24 24" width="16" height="16"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <span class="player__hint" id="playerHint">clique para ouvir</span>
+    </div>
+    <div class="gate__perf" aria-hidden="true"></div>
+  </div>
+
+  <div class="reel__strip" aria-hidden="true">
+    <span>Roteiro</span><i></i><span>Direção</span><i></i><span>Captação</span><i></i><span>Edição</span><i></i><span>Entrega</span>
+  </div>
+</section>
+
+<!-- ══════════════ TRABALHOS ══════════════ -->
+<section class="works section" id="trabalhos">
+  <div class="section__label"><em>03</em> Trabalhos</div>
+
+  <div class="works__head">
+    <h2 class="h-display" data-reveal="lines"><span>Contact</span><span class="ital">sheet</span></h2>
+    <div class="filters" data-reveal="fade" data-delay="180" role="tablist" aria-label="Filtrar trabalhos">
+      <button class="chip is-on" data-filter="all" role="tab" aria-selected="true">Todos</button>
+      <button class="chip" data-filter="video" role="tab" aria-selected="false">Vídeo</button>
+      <button class="chip" data-filter="campanha" role="tab" aria-selected="false">Campanha</button>
+      <button class="chip" data-filter="retrato" role="tab" aria-selected="false">Retrato</button>
+      <button class="chip" data-filter="lifestyle" role="tab" aria-selected="false">Lifestyle</button>
+      <button class="chip" data-filter="bastidores" role="tab" aria-selected="false">Bastidores</button>
+    </div>
+  </div>
+
+  <div class="grid" id="grid">
+
+    <article class="card card--wide" data-cat="video" data-type="video" data-src="assets/video/reel-principal.mp4" data-poster="assets/img/poster-reel.jpg" data-title="Engaja Mídia — Institucional" data-desc="Direção, roteiro e edição · 9:16 · 00:55" data-cursor="Abrir">
+      <div class="card__media">
+        <img src="assets/img/poster-reel-wide.jpg" alt="Frame do vídeo institucional da Engaja Mídia" loading="lazy" decoding="async">
+        <span class="card__play"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+      </div>
+      <div class="card__foot"><b>Engaja Mídia — Institucional</b><span>Vídeo · 00:55</span></div>
+    </article>
+
+    <article class="card" data-cat="campanha" data-type="image" data-src="assets/img/juju-01-market.jpg" data-title="Varejo em movimento" data-desc="Campanha · conteúdo em ponto de venda" data-cursor="Abrir">
+      <div class="card__media"><img src="assets/thumb/juju-01-market.jpg" alt="Júlia escolhendo frutas em um mercado, conteúdo de campanha" loading="lazy" decoding="async"></div>
+      <div class="card__foot"><b>Varejo em movimento</b><span>Campanha</span></div>
+    </article>
+
+    <article class="card" data-cat="campanha" data-type="image" data-src="assets/img/juju-02-rooftop.jpg" data-title="Torcida" data-desc="Editorial · série Brasil" data-cursor="Abrir">
+      <div class="card__media"><img src="assets/thumb/juju-02-rooftop.jpg" alt="Júlia posando ao lado de uma bandeira do Brasil em um terraço" loading="lazy" decoding="async"></div>
+      <div class="card__foot"><b>Torcida</b><span>Editorial</span></div>
+    </article>
+
+    <article class="card" data-cat="retrato" data-type="image" data-src="assets/img/juju-03-crates.jpg" data-title="Locação" data-desc="Retrato · luz natural" data-cursor="Abrir">
+      <div class="card__media"><img src="assets/thumb/juju-03-crates.jpg" alt="Retrato de Júlia em frente a engradados verdes" loading="lazy" decoding="async"></div>
+      <div class="card__foot"><b>Locação</b><span>Retrato</span></div>
+    </article>
+
+    <article class="card" data-cat="lifestyle" data-type="image" data-src="assets/img/juju-04-shades.jpg" data-title="Verão" data-desc="Lifestyle · série Brasil" data-cursor="Abrir">
+      <div class="card__media"><img src="assets/thumb/juju-04-shades.jpg" alt="Júlia sentada com óculos de sol laranja em um ambiente descontraído" loading="lazy" decoding="async"></div>
+      <div class="card__foot"><b>Verão</b><span>Lifestyle</span></div>
+    </article>
+
+    <article class="card" data-cat="bastidores" data-type="image" data-src="assets/img/juju-05-desk.jpg" data-title="Pré-produção" data-desc="Bastidores · roteiro e planejamento" data-cursor="Abrir">
+      <div class="card__media"><img src="assets/thumb/juju-05-desk.jpg" alt="Júlia usando o celular ao lado de laptop, câmera e caderno" loading="lazy" decoding="async"></div>
+      <div class="card__foot"><b>Pré-produção</b><span>Bastidores</span></div>
+    </article>
+
+    <article class="card" data-cat="retrato" data-type="image" data-src="assets/img/juju-06-garden.jpg" data-title="Natural" data-desc="Retrato · externa" data-cursor="Abrir">
+      <div class="card__media"><img src="assets/thumb/juju-06-garden.jpg" alt="Retrato de Júlia sorrindo sentada em um banco de madeira em meio a plantas" loading="lazy" decoding="async"></div>
+      <div class="card__foot"><b>Natural</b><span>Retrato</span></div>
+    </article>
+
+    <article class="card" data-cat="bastidores" data-type="image" data-src="assets/img/juju-07-studio.jpg" data-title="No set" data-desc="Bastidores · direção" data-cursor="Abrir">
+      <div class="card__media"><img src="assets/thumb/juju-07-studio.jpg" alt="Júlia olhando para a câmera enquanto trabalha no laptop" loading="lazy" decoding="async"></div>
+      <div class="card__foot"><b>No set</b><span>Bastidores</span></div>
+    </article>
+
+    <article class="card card--wide" data-cat="video" data-type="video" data-src="assets/video/clipe-02.mp4" data-poster="assets/img/poster-clipe.jpg" data-title="Clipe — locação externa" data-desc="Vídeo · 16:9 · 00:05" data-cursor="Abrir">
+      <div class="card__media">
+        <img src="assets/img/poster-clipe-wide.jpg" alt="Frame de vídeo com Júlia em uma locação externa" loading="lazy" decoding="async">
+        <span class="card__play"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+      </div>
+      <div class="card__foot"><b>Clipe — locação externa</b><span>Vídeo · 00:05</span></div>
+    </article>
+
+    <article class="card" data-cat="lifestyle" data-type="image" data-src="assets/img/juju-08-home.jpg" data-title="Look do dia" data-desc="Lifestyle · conteúdo de rotina" data-cursor="Abrir">
+      <div class="card__media"><img src="assets/thumb/juju-08-home.jpg" alt="Júlia em casa com camisa listrada, conteúdo de look do dia" loading="lazy" decoding="async"></div>
+      <div class="card__foot"><b>Look do dia</b><span>Lifestyle</span></div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ══════════════ SERVIÇOS ══════════════ -->
+<section class="serv section" id="servicos">
+  <div class="section__label"><em>04</em> Serviços</div>
+  <h2 class="h-display" data-reveal="lines"><span>O que eu</span><span class="ital">entrego</span></h2>
+
+  <div class="serv__grid" data-reveal="stagger">
+    <article class="scard" data-tilt>
+      <span class="scard__n">01</span>
+      <h3>Produção de vídeo &amp; Reels</h3>
+      <p>Roteiro, direção, captação e edição. Do conceito ao arquivo final, no formato certo para cada plataforma.</p>
+      <ul><li>Reels &amp; TikTok</li><li>Institucional</li><li>Cobertura de evento</li></ul>
+    </article>
+    <article class="scard" data-tilt>
+      <span class="scard__n">02</span>
+      <h3>Social media &amp; estratégia</h3>
+      <p>Planejamento de conteúdo, calendário editorial e posicionamento — com foco em alcance real e conversa com a audiência.</p>
+      <ul><li>Linha editorial</li><li>Calendário</li><li>Relatórios</li></ul>
+    </article>
+    <article class="scard" data-tilt>
+      <span class="scard__n">03</span>
+      <h3>Publicidade &amp; parcerias</h3>
+      <p>Publiposts, unboxings e campanhas com marcas — narrativa autêntica, sem parecer anúncio.</p>
+      <ul><li>Publipost</li><li>Campanha</li><li>Embaixadoria</li></ul>
+    </article>
+    <article class="scard" data-tilt>
+      <span class="scard__n">04</span>
+      <h3>Conteúdo lifestyle</h3>
+      <p>Rotina, beleza, moda e dia a dia com estética própria — o tipo de conteúdo que faz a pessoa parar o dedo.</p>
+      <ul><li>Rotina &amp; GRWM</li><li>Moda &amp; OOTD</li><li>Viagem</li></ul>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════════ FORMAÇÃO ══════════════ -->
+<section class="cert section" id="formacao">
+  <div class="section__label"><em>05</em> Formação</div>
+
+  <div class="cert__head">
+    <h2 class="h-display" data-reveal="lines"><span>Certificações</span></h2>
+    <p class="cert__intro" data-reveal="fade" data-delay="180">
+      22 horas de formação continuada concluídas em 2026 pela <b>GoKursos — Educação Continuada</b>.
+    </p>
+  </div>
+
+  <ol class="timeline" data-reveal="stagger">
+    <li class="tl-item">
+      <span class="tl-dot"></span>
+      <div class="tl-body">
+        <span class="tl-hours">10h</span>
+        <h3>Economia no Dia a Dia</h3>
+        <p>Conceitos econômicos aplicados ao desenvolvimento profissional.</p>
+        <span class="tl-meta">GoKursos · 06/05/2026 — 26/05/2026</span>
+      </div>
+    </li>
+    <li class="tl-item">
+      <span class="tl-dot"></span>
+      <div class="tl-body">
+        <span class="tl-hours">4h</span>
+        <h3>Marketing Pessoal</h3>
+        <p>Construção de marca pessoal e posicionamento profissional.</p>
+        <span class="tl-meta">GoKursos · 06/05/2026 — 26/05/2026</span>
+      </div>
+    </li>
+    <li class="tl-item">
+      <span class="tl-dot"></span>
+      <div class="tl-body">
+        <span class="tl-hours">4h</span>
+        <h3>Níveis de Comunicação</h3>
+        <p>Comunicação impessoal e interpessoal aplicada ao ambiente de trabalho.</p>
+        <span class="tl-meta">GoKursos · 06/05/2026 — 26/05/2026</span>
+      </div>
+    </li>
+    <li class="tl-item">
+      <span class="tl-dot"></span>
+      <div class="tl-body">
+        <span class="tl-hours">4h</span>
+        <h3>Hard &amp; Soft Skills</h3>
+        <p>Desenvolvimento de competências técnicas e comportamentais.</p>
+        <span class="tl-meta">GoKursos · 06/05/2026 — 26/05/2026</span>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- ══════════════ CONTATO ══════════════ -->
+<section class="cta section" id="contato">
+  <div class="section__label"><em>06</em> Contato</div>
+
+  <h2 class="cta__title">
+    <span class="line" data-split>VAMOS</span>
+    <span class="line line--out" data-split>CRIAR</span>
+  </h2>
+
+  <p class="cta__sub" data-reveal="fade">Parcerias, campanhas e produção de vídeo. Chama no direct — a resposta é rápida.</p>
+
+  <div class="cta__links" data-reveal="stagger">
+    <a class="clink" href="https://instagram.com/jullia_arauj2" target="_blank" rel="noopener" data-magnet data-cursor="Abrir">
+      <span class="clink__k">Instagram</span><b>@jullia_arauj2</b>
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a class="clink" href="https://instagram.com/midia_engaja_" target="_blank" rel="noopener" data-magnet data-cursor="Abrir">
+      <span class="clink__k">Agência</span><b>@midia_engaja_</b>
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a class="clink" href="https://linktr.ee/juliavga626" target="_blank" rel="noopener" data-magnet data-cursor="Abrir">
+      <span class="clink__k">Todos os links</span><b>linktr.ee/juliavga626</b>
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+  <div class="marquee marquee--cta" aria-hidden="true">
+    <div class="marquee__track marquee__track--rev">
+      <span>Disponível para parcerias ✦ Disponível para parcerias ✦ Disponível para parcerias ✦</span>
+      <span>Disponível para parcerias ✦ Disponível para parcerias ✦ Disponível para parcerias ✦</span>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <span>© 2026 Júlia Araújo</span>
+  <span class="foot__mid">Lifestyle Creator · Social Media · Filmmaker</span>
+  <button class="foot__heart" id="heart" aria-label="Recadinho">♥</button>
+</footer>
+
+</main>
+
+<!-- ══════════════ LIGHTBOX ══════════════ -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Visualizador" aria-hidden="true">
+  <button class="lb__close" id="lbClose" aria-label="Fechar">✕</button>
+  <button class="lb__nav lb__nav--prev" id="lbPrev" aria-label="Anterior">‹</button>
+  <button class="lb__nav lb__nav--next" id="lbNext" aria-label="Próximo">›</button>
+  <figure class="lb__stage">
+    <div class="lb__media" id="lbMedia"></div>
+    <figcaption class="lb__cap">
+      <b id="lbTitle"></b><span id="lbDesc"></span><em id="lbCount"></em>
+    </figcaption>
+  </figure>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
