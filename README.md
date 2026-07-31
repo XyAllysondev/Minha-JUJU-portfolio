@@ -1,7 +1,12 @@
 # Portfólio — Júlia Araújo
 
+**No ar:** https://xyallysondev.github.io/Minha-JUJU-portfolio/
+
 Site de portfólio de uma página para **Júlia Araújo** (Lifestyle Creator · Social Media · Filmmaker).
 HTML + CSS + JavaScript puros. **Zero dependências, zero build.**
+
+Publicado via GitHub Pages a partir da branch `main`, pasta raiz.
+Todo `git push` para `main` republica o site sozinho em cerca de um minuto.
 
 ---
 
@@ -77,14 +82,22 @@ ffmpeg -i entrada.MOV -vf "scale=720:1280" -c:v libx264 -pix_fmt yuv420p \
 
 ---
 
-## Publicar na internet (grátis)
+## Publicação
 
-1. **Netlify Drop** — o mais fácil: acesse [app.netlify.com/drop](https://app.netlify.com/drop)
-   e arraste esta pasta inteira para a página. O link sai em segundos.
-2. **Vercel** — `vercel.com/new`, importe a pasta, deploy.
-3. **GitHub Pages** — suba a pasta num repositório e ative Pages nas configurações.
+Já está no ar pelo **GitHub Pages**: https://xyallysondev.github.io/Minha-JUJU-portfolio/
 
-Depois é só colocar o link na bio do Instagram ou dentro do Linktree.
+Para atualizar, basta commitar e dar push na `main` — o Pages reconstrói sozinho:
+
+```bash
+git add -A
+git commit -m "atualiza fotos"
+git push
+```
+
+Esse é o link para a bio do Instagram ou para dentro do Linktree.
+
+**Domínio próprio** (ex.: `juliaaraujo.com.br`): registre o domínio, aponte o DNS
+para o GitHub Pages e configure em *Settings → Pages → Custom domain*.
 
 ---
 
