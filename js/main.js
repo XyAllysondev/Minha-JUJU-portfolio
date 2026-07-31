@@ -650,6 +650,32 @@
   }
 
   /* ══════════════════════════════════════════════
+     13b. BOTÃO FLUTUANTE DE WHATSAPP
+     Aparece depois do hero e some na seção de contato,
+     onde o link já está na tela.
+     ══════════════════════════════════════════════ */
+  function initWhatsApp() {
+    const wa = $('#wa');
+    if (!wa) return;
+    const contato = $('#contato');
+    let atContact = false;
+
+    if ('IntersectionObserver' in window && contato) {
+      new IntersectionObserver(ents => {
+        ents.forEach(e => { atContact = e.isIntersecting; update(); });
+      }, { threshold: 0.18 }).observe(contato);
+    }
+
+    function update() {
+      wa.classList.toggle('is-on', window.scrollY > window.innerHeight * 0.7 && !atContact);
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+  }
+
+  /* ══════════════════════════════════════════════
      14. TOAST + EASTER EGG
      ══════════════════════════════════════════════ */
   const toast = (() => {
@@ -708,6 +734,7 @@
     initHeroVideo();
     initPlayer();
     initGallery();
+    initWhatsApp();
     initTilt();
     initReveals();
     initScroll();

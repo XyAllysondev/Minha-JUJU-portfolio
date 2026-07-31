@@ -641,6 +641,8 @@ body.has-cursor .cursor{opacity:1}
   will-change:transform;
 }
 .clink:hover{background:var(--ink-3)}
+.clink--wa .clink__k{color:#25d366}
+.clink--wa:hover svg{color:#25d366}
 .clink__k{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);width:120px;flex:none}
 .clink b{font-size:clamp(16px,2vw,23px);font-weight:600;letter-spacing:-.02em;margin-right:auto}
 .clink svg{color:var(--mute);transition:transform .4s var(--ease),color .3s}
@@ -694,6 +696,33 @@ body.has-cursor .cursor{opacity:1}
 .lb__nav:hover{background:rgba(244,240,232,.1);border-color:var(--paper)}
 .lb__nav--prev{left:clamp(10px,2.5vw,30px)}
 .lb__nav--next{right:clamp(10px,2.5vw,30px)}
+
+/* ═══════════ WHATSAPP FLUTUANTE ═══════════ */
+.wa{
+  position:fixed;right:clamp(16px,2.6vw,34px);bottom:clamp(16px,2.6vw,34px);
+  z-index:7500;display:inline-flex;align-items:center;gap:10px;
+  padding:13px 20px;border-radius:100px;
+  background:#25d366;color:#04231a;
+  font-size:13.5px;font-weight:700;letter-spacing:-.01em;
+  box-shadow:0 14px 38px rgba(37,211,102,.28),0 0 0 1px rgba(255,255,255,.08) inset;
+  opacity:0;visibility:hidden;transform:translateY(150%) scale(.9);
+  transition:transform .55s var(--ease),opacity .35s,visibility .55s,box-shadow .3s,background .3s;
+  will-change:transform;
+}
+.wa.is-on{opacity:1;visibility:visible;transform:none}
+.wa:hover{background:#2ee878;box-shadow:0 18px 48px rgba(37,211,102,.45)}
+.wa svg{flex:none}
+
+/* pulso discreto pra chamar atenção sem irritar */
+.wa::before{
+  content:"";position:absolute;inset:0;border-radius:100px;
+  border:1.5px solid rgba(37,211,102,.65);
+  animation:waPulse 2.8s var(--ease-io) infinite;pointer-events:none;
+}
+@keyframes waPulse{
+  0%{transform:scale(1);opacity:.7}
+  70%,100%{transform:scale(1.28);opacity:0}
+}
 
 /* ═══════════ TOAST ═══════════ */
 .toast{
@@ -775,6 +804,10 @@ body.has-cursor .cursor{opacity:1}
   .lb__nav--next{right:calc(50% - 56px)}
   .foot{justify-content:center;text-align:center}
   .foot__mid{order:3;width:100%}
+
+  /* no celular vira só o ícone, pra não roubar tela */
+  .wa{padding:0;width:54px;height:54px;justify-content:center;gap:0}
+  .wa span{display:none}
 }
 
 /* ═══════════ REDUCED MOTION ═══════════ */
@@ -786,10 +819,11 @@ body.has-cursor .cursor{opacity:1}
   .h-display span > i{transform:none!important}
   .ch{opacity:1!important;transform:none!important}
   .scrub .w{color:var(--paper)!important}
+  .wa::before{display:none}
 }
 
 /* print */
 @media print{
-  .loader,.grain,.vignette,.scanlines,.cursor,.progress,.curtain,.nav,.menu,.lb,.toast,.marquee{display:none!important}
+  .loader,.grain,.vignette,.scanlines,.cursor,.progress,.curtain,.nav,.menu,.lb,.toast,.marquee,.wa{display:none!important}
   body{background:#fff;color:#000}
 }
