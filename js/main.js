@@ -11,6 +11,9 @@
   const lerp  = (a, b, t) => a + (b - a) * t;
   const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const SMALL = () => window.innerWidth < 900;
+  // celular em dados móveis: não baixar vídeo pesado sem o usuário pedir
+  const SAVE_DATA = !!(navigator.connection && navigator.connection.saveData);
 
   /* ══════════════════════════════════════════════
      1. PRELOADER  —  film leader + progresso real
@@ -99,7 +102,8 @@
      2. GRÃO DE FILME (canvas)
      ══════════════════════════════════════════════ */
   function initGrain() {
-    if (REDUCED) return;
+    // no touch o grão vira textura estática via CSS — poupa CPU e bateria
+    if (REDUCED || !FINE_POINTER) return;
     const cv = $('#grain');
     const ctx = cv.getContext('2d', { alpha: true });
     let w = 0, h = 0, frames = [], i = 0, raf = null, last = 0;
@@ -290,12 +294,15 @@
       else if (y < lastY - 4) nav.classList.remove('is-hidden');
       lastY = y;
 
-      if (!REDUCED) {
+      // parallax só no desktop: no celular custa frame e desalinha o grid
+      if (!REDUCED && !SMALL()) {
         parallax.forEach(p => {
           const r = p.el.getBoundingClientRect();
           const off = (r.top + r.height / 2 - vh / 2) * p.f;
           p.el.style.transform = `translate3d(0,${off.toFixed(2)}px,0)`;
         });
+      } else {
+        parallax.forEach(p => { if (p.el.style.transform) p.el.style.transform = ''; });
       }
 
       // texto que acende conforme o scroll
@@ -472,8 +479,12 @@
       if (e.key === 'ArrowLeft')  { v.currentTime = Math.max(0, v.currentTime - 5); e.preventDefault(); }
     });
 
-    // preview silencioso ao entrar em tela / pausa ao sair
-    if ('IntersectionObserver' in window && !REDUCED) {
+    // No celular o reel tem 14 MB: nada de baixar/tocar sozinho em dados móveis.
+    // O poster aparece e o vídeo só carrega quando a pessoa toca no play.
+    const AUTOPLAY_PREVIEW = FINE_POINTER && !SMALL() && !SAVE_DATA && !REDUCED;
+    if (!AUTOPLAY_PREVIEW) v.preload = 'none';
+
+    if ('IntersectionObserver' in window && AUTOPLAY_PREVIEW) {
       const io = new IntersectionObserver(ents => {
         ents.forEach(e => {
           if (e.isIntersecting) {
@@ -483,6 +494,12 @@
           }
         });
       }, { threshold: 0.45 });
+      io.observe(wrap);
+    } else if ('IntersectionObserver' in window) {
+      // fora da tela, pausa para não gastar bateria/dados
+      const io = new IntersectionObserver(ents => {
+        ents.forEach(e => { if (!e.isIntersecting && !v.paused) pause(); });
+      }, { threshold: 0.1 });
       io.observe(wrap);
     }
 
@@ -496,7 +513,7 @@
     const v = $('#heroVideo');
     if (!v) return;
     v.muted = true;
-    if (REDUCED) return;
+    if (REDUCED || SAVE_DATA) { v.preload = 'none'; return; }
     const go = () => v.play().catch(() => {});
     go();
     document.addEventListener('site:ready', go);
